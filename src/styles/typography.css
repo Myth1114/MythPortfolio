@@ -1,0 +1,97 @@
+/* =========================================
+   TYPOGRAPHY
+   ========================================= */
+
+body {
+  font-family: var(--font-body);
+  font-weight: var(--weight-regular);
+}
+
+/* ---------- Headings ---------- */
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  color: var(--color-text);
+  letter-spacing: -0.035em;
+}
+
+h1 {
+  font-size: var(--text-4xl);
+  line-height: var(--leading-tight);
+  font-weight: var(--weight-semibold);
+}
+
+h2 {
+  font-size: var(--text-3xl);
+  line-height: 1;
+  font-weight: var(--weight-semibold);
+}
+
+h3 {
+  font-size: var(--text-xl);
+  line-height: var(--leading-snug);
+  font-weight: var(--weight-semibold);
+}
+
+h4 {
+  font-size: var(--text-lg);
+  line-height: var(--leading-snug);
+  font-weight: var(--weight-medium);
+}
+
+/* ---------- Body ---------- */
+
+p {
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-soft);
+}
+
+/* ---------- Display ---------- */
+
+.display {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  line-height: var(--leading-tight);
+  font-weight: var(--weight-semibold);
+  letter-spacing: -0.065em;
+}
+
+/* ---------- Eyebrow ---------- */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  font-size: var(--text-xs);
+  line-height: 1;
+  font-weight: var(--weight-semibold);
+
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: var(--color-muted);
+}
+
+/* ---------- Handwritten ---------- */
+
+.handwritten {
+  font-family: var(--font-handwritten);
+  font-weight: 400;
+}
+
+/* ---------- Muted ---------- */
+
+.text-muted {
+  color: var(--color-muted);
+}
+
+/* ---------- Accent ---------- */
+
+.text-accent {
+  color: var(--color-accent);
+}

@@ -1,0 +1,239 @@
+.experience-item {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    36px
+    minmax(0, 1fr);
+
+  gap: var(--space-6);
+
+  padding-bottom: var(--space-10);
+}
+
+/* =========================================
+     TIMELINE
+     ========================================= */
+
+.experience-item__timeline {
+  position: relative;
+
+  display: flex;
+
+  justify-content: center;
+}
+
+.experience-item__dot {
+  position: relative;
+
+  z-index: 2;
+
+  width: 12px;
+  height: 12px;
+
+  margin-top: 8px;
+
+  background: var(--color-surface);
+
+  border: 2px solid var(--color-accent);
+
+  border-radius: 50%;
+}
+
+.experience-item__line {
+  position: absolute;
+
+  top: 20px;
+  bottom: -10px;
+
+  width: 1px;
+
+  background: var(--color-line);
+}
+
+.experience-item:last-child .experience-item__line {
+  display: none;
+}
+
+/* =========================================
+     PERIOD
+     ========================================= */
+
+.experience-item__period {
+  margin-bottom: var(--space-4);
+
+  color: var(--color-muted);
+
+  font-family: var(--font-mono);
+
+  font-size: var(--text-xs);
+
+  letter-spacing: 0.02em;
+}
+
+/* =========================================
+     CARD
+     ========================================= */
+
+.experience-item__card {
+  position: relative;
+
+  padding: var(--space-8) var(--space-8);
+
+  background: var(--color-surface);
+
+  border: var(--border);
+
+  border-radius: var(--radius-sm);
+
+  transition: transform var(--duration-normal) var(--ease-spring),
+    box-shadow var(--duration-normal) var(--ease-standard);
+}
+
+.experience-item__card:hover {
+  transform: translateY(-3px);
+
+  box-shadow: var(--shadow-md);
+}
+
+/* =========================================
+     TOP
+     ========================================= */
+
+.experience-item__top {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+}
+
+.experience-item__arrow {
+  color: var(--color-accent);
+
+  transition: transform var(--duration-normal) var(--ease-spring);
+}
+
+.experience-item__card:hover .experience-item__arrow {
+  transform: translate(4px, -4px);
+}
+
+/* =========================================
+     COMPANY
+     ========================================= */
+
+.experience-item__card h3 {
+  margin-top: var(--space-5);
+
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+
+  letter-spacing: -0.045em;
+}
+
+.experience-item__role {
+  margin-top: var(--space-2);
+
+  font-size: var(--text-md);
+
+  font-weight: var(--weight-medium);
+
+  color: var(--color-accent-dark);
+}
+
+.experience-item__location {
+  margin-top: 4px;
+
+  color: var(--color-muted);
+
+  font-size: var(--text-xs);
+}
+
+/* =========================================
+     DESCRIPTION
+     ========================================= */
+
+.experience-item__description {
+  max-width: 700px;
+
+  margin-top: var(--space-6);
+
+  color: var(--color-text-soft);
+
+  line-height: 1.75;
+}
+
+/* =========================================
+     RESPONSIBILITIES
+     ========================================= */
+
+.experience-item__responsibilities {
+  margin-top: var(--space-7);
+
+  padding-top: var(--space-6);
+
+  border-top: var(--border);
+}
+
+.experience-item__responsibilities > span {
+  color: var(--color-muted);
+
+  font-size: var(--text-xs);
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.08em;
+}
+
+.experience-item__responsibilities ul {
+  display: grid;
+
+  gap: var(--space-2);
+
+  margin-top: var(--space-4);
+}
+
+.experience-item__responsibilities li {
+  position: relative;
+
+  padding-left: var(--space-5);
+
+  color: var(--color-text-soft);
+
+  font-size: var(--text-sm);
+
+  line-height: 1.6;
+}
+
+.experience-item__responsibilities li::before {
+  content: "—";
+
+  position: absolute;
+
+  left: 0;
+
+  color: var(--color-accent);
+}
+
+/* =========================================
+     CURRENT ROLE
+     ========================================= */
+
+.experience-item--current .experience-item__card {
+  background: linear-gradient(
+    135deg,
+    var(--color-surface),
+    var(--color-accent-soft)
+  );
+}
+
+@media (max-width: 600px) {
+  .experience-item {
+    grid-template-columns: 24px 1fr;
+
+    gap: var(--space-4);
+  }
+
+  .experience-item__card {
+    padding: var(--space-6);
+  }
+}

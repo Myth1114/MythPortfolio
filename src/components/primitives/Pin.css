@@ -1,0 +1,74 @@
+.pin {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.pin__head {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: var(--pin-color);
+  box-shadow: inset 2px 2px 4px rgba(255, 255, 255, 0.28),
+    0 3px 6px rgba(30, 25, 20, 0.16);
+}
+
+.pin__shadow {
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  width: 7px;
+  height: 7px;
+  transform: translateX(-50%) rotate(45deg);
+  background: var(--pin-color);
+}
+
+/* =========================================
+     COLORS
+     ========================================= */
+
+.pin--accent {
+  --pin-color: var(--color-accent);
+}
+
+.pin--olive {
+  --pin-color: var(--color-olive);
+}
+
+.pin--blue {
+  --pin-color: var(--color-blue);
+}
+
+.pin--yellow {
+  --pin-color: var(--color-yellow);
+}
+
+/* =========================================
+     POSITIONS
+     ========================================= */
+
+.pin--top-right {
+  top: -8px;
+  right: 20px;
+}
+
+.pin--top-left {
+  top: -8px;
+  left: 20px;
+}
+
+.pin--bottom-right {
+  bottom: -8px;
+  right: 20px;
+}
+
+.pin--bottom-left {
+  bottom: -8px;
+  left: 20px;
+}

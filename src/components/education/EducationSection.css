@@ -1,0 +1,140 @@
+.education-section {
+  padding-top: var(--space-24);
+}
+
+/* =========================================
+     HEADER
+     ========================================= */
+
+.education-section__header {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(260px, 0.5fr);
+
+  gap: var(--space-12);
+
+  align-items: end;
+
+  padding-bottom: var(--space-12);
+
+  border-bottom: var(--border);
+}
+
+.education-section__intro {
+  max-width: 390px;
+
+  margin-left: auto;
+
+  color: var(--color-text-soft);
+
+  line-height: 1.7;
+}
+
+/* =========================================
+     LIST
+     ========================================= */
+
+.education-section__list {
+  margin-top: var(--space-4);
+}
+
+@media (max-width: 750px) {
+  .education-section__header {
+    grid-template-columns: 1fr;
+
+    gap: var(--space-6);
+  }
+
+  .education-section__intro {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .education-section {
+    padding-top: var(--space-16);
+  }
+}
+
+/* =========================================
+   CREDENTIALS
+   ========================================= */
+
+.education-section__credentials {
+  display: grid;
+
+  grid-template-columns:
+    minmax(200px, 0.45fr)
+    1fr;
+
+  gap: var(--space-10);
+
+  margin-top: var(--space-16);
+
+  padding-top: var(--space-10);
+
+  border-top: var(--border);
+}
+
+.education-section__credentials-heading h3 {
+  margin-top: var(--space-4);
+
+  font-size: var(--text-xl);
+
+  letter-spacing: -0.035em;
+}
+
+.education-section__certificate {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding: var(--space-6);
+  background: var(--color-surface);
+  border: var(--border);
+  border-radius: var(--radius-sm);
+  transition: transform var(--duration-normal) var(--ease-spring);
+}
+
+.education-section__certificate:hover {
+  transform: translateY(-3px);
+}
+
+.education-section__certificate div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--space-2);
+}
+
+.education-section__certificate div span {
+  color: var(--color-muted);
+
+  font-size: var(--text-xs);
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.06em;
+}
+
+.education-section__certificate strong {
+  font-size: var(--text-md);
+}
+
+.education-section__certificate-mark {
+  color: var(--color-accent);
+
+  font-family: var(--font-mono);
+
+  font-size: var(--text-xs);
+}
+
+@media (max-width: 700px) {
+  .education-section__credentials {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+}

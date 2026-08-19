@@ -1,0 +1,98 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+
+  border-radius: var(--radius-pill);
+
+  font-weight: var(--weight-semibold);
+
+  white-space: nowrap;
+
+  transition: transform var(--duration-fast) var(--ease-spring),
+    background-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+/* =========================================
+     SIZES
+     ========================================= */
+
+.button--small {
+  min-height: 36px;
+  padding-inline: var(--space-4);
+
+  font-size: var(--text-sm);
+}
+
+.button--medium {
+  min-height: 44px;
+  padding-inline: var(--space-5);
+
+  font-size: var(--text-sm);
+}
+
+.button--large {
+  min-height: 52px;
+  padding-inline: var(--space-6);
+
+  font-size: var(--text-base);
+}
+
+/* =========================================
+     PRIMARY
+     ========================================= */
+
+.button--primary {
+  color: #fff;
+  background: var(--color-accent);
+
+  box-shadow: var(--shadow-xs);
+}
+
+.button--primary:hover {
+  background: var(--color-accent-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* =========================================
+     SECONDARY
+     ========================================= */
+
+.button--secondary {
+  color: var(--color-text);
+  background: var(--color-surface);
+
+  border: var(--border);
+}
+
+.button--secondary:hover {
+  background: var(--color-surface-soft);
+  transform: translateY(-2px);
+}
+
+/* =========================================
+     GHOST
+     ========================================= */
+
+.button--ghost {
+  color: var(--color-text-soft);
+  background: transparent;
+}
+
+.button--ghost:hover {
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+
+/* =========================================
+     ACTIVE
+     ========================================= */
+
+.button:active {
+  transform: translateY(0) scale(0.98);
+}

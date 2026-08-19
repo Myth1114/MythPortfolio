@@ -1,0 +1,185 @@
+:root {
+  /* =========================================
+       PORTFOLIO DESIGN SYSTEM v1.0
+       LIGHT THEME
+       ========================================= */
+
+  /* ---------- Colors ---------- */
+
+  --color-bg: #f5f1e8;
+  --color-bg-elevated: #faf8f2;
+
+  --color-surface: #fffdf7;
+  --color-surface-soft: #f0ece2;
+  --color-surface-muted: #e7e1d5;
+
+  --color-text: #25231f;
+  --color-text-soft: #48443d;
+  --color-muted: #777166;
+
+  --color-line: #d8d1c3;
+  --color-line-strong: #bdb4a4;
+
+  --color-accent: #a85c3b;
+  --color-accent-dark: #7f4028;
+  --color-accent-soft: #ead5c8;
+
+  --color-olive: #727457;
+  --color-olive-soft: #dfe0ce;
+
+  --color-blue: #5f7580;
+  --color-blue-soft: #d8e1e3;
+
+  --color-yellow: #d3b35d;
+  --color-yellow-soft: #eee2b8;
+
+  --color-success: #5d775d;
+  --color-danger: #a64c4c;
+  --color-warning: #a9783f;
+
+  /* ---------- Typography ---------- */
+
+  --font-body: "DM Sans", sans-serif;
+  --font-display: "DM Sans", sans-serif;
+  --font-handwritten: "Caveat", cursive;
+
+  --text-xs: 0.72rem;
+  --text-sm: 0.82rem;
+  --text-base: 1rem;
+  --text-md: 1.125rem;
+  --text-lg: 1.35rem;
+  --text-xl: 1.75rem;
+  --text-2xl: 2.25rem;
+  --text-3xl: 3rem;
+  --text-4xl: 4rem;
+  --text-hero: clamp(3.5rem, 9vw, 8rem);
+
+  --leading-tight: 0.95;
+  --leading-snug: 1.2;
+  --leading-normal: 1.55;
+  --leading-relaxed: 1.75;
+
+  /* ---------- Font Weights ---------- */
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* ---------- Spacing ---------- */
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* ---------- Layout ---------- */
+
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1200px;
+
+  --page-padding: clamp(1.25rem, 4vw, 4rem);
+
+  /* ---------- Radius ---------- */
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  /* ---------- Borders ---------- */
+
+  --border-width: 1px;
+  --border: 1px solid var(--color-line);
+  --border-strong: 1px solid var(--color-line-strong);
+
+  /* ---------- Shadows ---------- */
+
+  --shadow-xs: 0 2px 8px rgba(55, 45, 32, 0.04);
+
+  --shadow-sm: 0 6px 18px rgba(55, 45, 32, 0.06);
+
+  --shadow-md: 0 14px 35px rgba(55, 45, 32, 0.09);
+
+  --shadow-lg: 0 24px 60px rgba(55, 45, 32, 0.13);
+
+  --shadow-paper: 0 10px 28px rgba(55, 45, 32, 0.08);
+
+  /* ---------- Motion ---------- */
+
+  --duration-fast: 160ms;
+  --duration-normal: 280ms;
+  --duration-slow: 500ms;
+
+  --ease-standard: cubic-bezier(0.2, 0.65, 0.3, 1);
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ---------- Z-index ---------- */
+
+  --z-base: 1;
+  --z-header: 100;
+  --z-dropdown: 200;
+  --z-modal: 500;
+  --z-command: 600;
+  --z-toast: 700;
+}
+
+/* =========================================
+     DARK THEME
+     ========================================= */
+
+:root[data-theme="dark"] {
+  --color-bg: #1d1c19;
+  --color-bg-elevated: #25231f;
+
+  --color-surface: #292722;
+  --color-surface-soft: #312e28;
+  --color-surface-muted: #3a362f;
+
+  --color-text: #f1ede3;
+  --color-text-soft: #d0c9bb;
+  --color-muted: #9d9588;
+
+  --color-line: #49443b;
+  --color-line-strong: #625b4f;
+
+  --color-accent: #d18a67;
+  --color-accent-dark: #e0a082;
+  --color-accent-soft: #4b352b;
+
+  --color-olive: #a0a27d;
+  --color-olive-soft: #383a2e;
+
+  --color-blue: #91aab2;
+  --color-blue-soft: #303a3d;
+
+  --color-yellow: #d6bd72;
+  --color-yellow-soft: #403b29;
+
+  --color-success: #91aa91;
+  --color-danger: #d17c7c;
+  --color-warning: #d2a16a;
+
+  --shadow-xs: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+  --shadow-sm: 0 6px 18px rgba(0, 0, 0, 0.2);
+
+  --shadow-md: 0 14px 35px rgba(0, 0, 0, 0.25);
+
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.35);
+
+  --shadow-paper: 0 10px 28px rgba(0, 0, 0, 0.25);
+}

@@ -1,0 +1,41 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding-inline: var(--space-3);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.03em;
+  border: 1px solid transparent;
+}
+
+/* =========================================
+     VARIANTS
+     ========================================= */
+
+.badge--default {
+  color: var(--color-text-soft);
+  background: var(--color-surface-soft);
+  border-color: var(--color-line);
+}
+
+.badge--accent {
+  color: var(--color-accent-dark);
+  background: var(--color-accent-soft);
+}
+
+.badge--olive {
+  color: var(--color-olive);
+  background: var(--color-olive-soft);
+}
+
+.badge--blue {
+  color: var(--color-blue);
+  background: var(--color-blue-soft);
+}
+
+.badge--yellow {
+  color: #806b2d;
+  background: var(--color-yellow-soft);
+}

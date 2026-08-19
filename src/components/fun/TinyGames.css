@@ -1,0 +1,321 @@
+/* =========================================
+   TINY GAMES
+   ========================================= */
+
+.tiny-games {
+  padding-block: var(--space-10) var(--space-16);
+}
+
+.tiny-games__header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-8);
+  margin-bottom: var(--space-8);
+}
+
+.tiny-games__header h2 {
+  margin-top: var(--space-3);
+
+  color: var(--color-text);
+
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-weight: var(--weight-medium);
+
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+.tiny-games__header h2 span {
+  color: var(--color-accent);
+}
+
+.tiny-games__header p {
+  max-width: 340px;
+
+  color: var(--color-muted);
+
+  font-size: var(--text-sm);
+  line-height: 1.7;
+}
+
+/* =========================================
+     ARCADE
+     ========================================= */
+
+.tiny-games__arcade {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+
+  max-width: 900px;
+  margin-inline: auto;
+
+  background: var(--color-surface);
+
+  border: var(--border);
+  border-radius: var(--radius-sm);
+
+  box-shadow: var(--shadow-paper);
+
+  overflow: hidden;
+}
+
+/* =========================================
+     GAME NAV
+     ========================================= */
+
+.tiny-games__nav {
+  display: flex;
+  flex-direction: column;
+
+  padding: var(--space-3);
+
+  background: var(--color-surface-soft);
+
+  border-right: 1px solid var(--color-line);
+}
+
+.tiny-games__nav button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+
+  padding: 12px 10px;
+
+  color: var(--color-muted);
+
+  border-radius: var(--radius-xs);
+
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+
+  text-align: left;
+
+  transition: color var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard);
+}
+
+.tiny-games__nav button span {
+  opacity: 0.55;
+}
+
+.tiny-games__nav button:hover {
+  color: var(--color-text);
+  background: var(--color-surface);
+}
+
+.tiny-games__nav button.is-active {
+  color: var(--color-surface);
+  background: var(--color-accent);
+}
+
+/* =========================================
+     GAME
+     ========================================= */
+
+.tiny-games__game {
+  min-height: 420px;
+
+  padding: clamp(28px, 5vw, 54px);
+
+  text-align: center;
+}
+
+.tiny-games__number {
+  color: var(--color-muted);
+
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+
+  letter-spacing: 0.08em;
+}
+
+.tiny-games__game h3 {
+  margin-top: var(--space-5);
+
+  color: var(--color-text);
+
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  font-weight: var(--weight-medium);
+
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.tiny-games__question {
+  max-width: 500px;
+
+  margin: var(--space-5) auto 0;
+
+  color: var(--color-muted);
+
+  font-size: var(--text-sm);
+  line-height: 1.7;
+}
+
+/* =========================================
+     CODE
+     ========================================= */
+
+.tiny-games__code {
+  width: fit-content;
+  max-width: 100%;
+
+  margin: var(--space-6) auto 0;
+  padding: 14px 18px;
+
+  overflow-x: auto;
+
+  color: var(--color-text);
+
+  background: var(--color-surface-soft);
+
+  border: 1px solid var(--color-line);
+
+  border-radius: var(--radius-xs);
+
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+
+  text-align: left;
+}
+
+/* =========================================
+     OPTIONS
+     ========================================= */
+
+.tiny-games__options {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: var(--space-3);
+
+  margin-top: var(--space-8);
+}
+
+.tiny-games__options button {
+  padding: 11px 17px;
+
+  color: var(--color-text);
+
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-xs);
+
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+
+  transition: transform var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard);
+}
+
+.tiny-games__options button:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  background: var(--color-surface-soft);
+}
+
+.tiny-games__options button.is-correct {
+  color: var(--color-surface);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.tiny-games__options button.is-wrong {
+  opacity: 0.4;
+}
+
+.tiny-games__options button:disabled {
+  cursor: default;
+}
+
+/* =========================================
+     RESULT
+     ========================================= */
+
+.tiny-games__result {
+  margin-top: var(--space-7);
+}
+
+.tiny-games__result p {
+  color: var(--color-accent);
+
+  font-family: var(--font-handwritten);
+  font-size: 1.15rem;
+
+  transform: rotate(-1deg);
+}
+
+.tiny-games__next {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: var(--space-5);
+
+  color: var(--color-text);
+
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+
+  border-bottom: 1px solid var(--color-line-strong);
+}
+
+.tiny-games__next:hover {
+  color: var(--color-accent);
+}
+
+/* =========================================
+     MOBILE
+     ========================================= */
+
+@media (max-width: 700px) {
+  .tiny-games__header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .tiny-games__arcade {
+    grid-template-columns: 1fr;
+  }
+
+  .tiny-games__nav {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+
+    border-right: 0;
+    border-bottom: 1px solid var(--color-line);
+
+    padding: 8px;
+  }
+
+  .tiny-games__nav button {
+    justify-content: center;
+
+    padding: 10px 5px;
+
+    font-size: 0.58rem;
+  }
+
+  .tiny-games__nav button span {
+    display: none;
+  }
+
+  .tiny-games__game {
+    min-height: 380px;
+
+    padding: 32px 20px;
+  }
+
+  .tiny-games__options {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .tiny-games__options button {
+    width: 100%;
+  }
+}

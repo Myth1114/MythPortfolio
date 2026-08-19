@@ -1,0 +1,450 @@
+/* =========================================
+   USELESS BUT WONDERFUL
+   ========================================= */
+
+.useless-wonderful {
+  padding-block: var(--space-10) var(--space-16);
+}
+
+/* =========================================
+     HEADER
+     ========================================= */
+
+.useless-wonderful__header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+
+  gap: var(--space-8);
+
+  margin-bottom: var(--space-10);
+}
+
+.useless-wonderful__header h2 {
+  margin-top: var(--space-3);
+}
+
+.useless-wonderful__header h2 span {
+  color: var(--color-accent);
+}
+
+.useless-wonderful__header p {
+  max-width: 350px;
+
+  color: var(--color-muted);
+
+  font-size: var(--text-sm);
+  line-height: 1.75;
+}
+
+/* =========================================
+     CABINET
+     ========================================= */
+
+.useless-wonderful__cabinet {
+  width: min(100%, 920px);
+
+  margin-inline: auto;
+
+  background: var(--color-surface);
+
+  border: var(--border);
+  border-radius: var(--radius-sm);
+
+  box-shadow: var(--shadow-paper);
+
+  overflow: hidden;
+
+  transition: box-shadow var(--duration-normal) var(--ease-standard),
+    background-color var(--duration-normal) var(--ease-standard);
+}
+
+.useless-wonderful__cabinet.is-better {
+  box-shadow: 0 18px 50px
+      color-mix(in srgb, var(--color-accent) 13%, transparent),
+    var(--shadow-paper);
+}
+
+/* =========================================
+     TOP / FOOTER
+     ========================================= */
+
+.useless-wonderful__cabinet-top,
+.useless-wonderful__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 14px 20px;
+
+  color: var(--color-muted);
+
+  background: var(--color-surface-soft);
+
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+
+  letter-spacing: 0.06em;
+}
+
+.useless-wonderful__cabinet-top {
+  border-bottom: 1px solid var(--color-line);
+}
+
+.useless-wonderful__footer {
+  border-top: 1px solid var(--color-line);
+}
+
+/* =========================================
+     OBJECTS
+     ========================================= */
+
+.useless-wonderful__objects {
+  display: grid;
+
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+
+  padding: 18px;
+
+  gap: 10px;
+
+  border-bottom: 1px solid var(--color-line);
+}
+
+.useless-wonderful__object {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 10px;
+
+  min-width: 0;
+
+  padding: 16px 8px;
+
+  color: var(--color-muted);
+
+  border: 1px solid transparent;
+  border-radius: var(--radius-xs);
+
+  transition: color var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard);
+}
+
+.useless-wonderful__object:hover {
+  color: var(--color-text);
+
+  background: var(--color-surface-soft);
+
+  border-color: var(--color-line);
+
+  transform: translateY(-2px);
+}
+
+.useless-wonderful__object.is-active {
+  color: var(--color-accent);
+
+  background: color-mix(in srgb, var(--color-accent) 7%, var(--color-surface));
+
+  border-color: color-mix(in srgb, var(--color-accent) 30%, var(--color-line));
+}
+
+.useless-wonderful__object-icon {
+  display: grid;
+  place-items: center;
+
+  width: 44px;
+  height: 44px;
+
+  border: 1px solid var(--color-line);
+
+  border-radius: 50%;
+}
+
+.useless-wonderful__object-label {
+  max-width: 100%;
+
+  overflow: hidden;
+
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+
+  text-align: center;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* =========================================
+     DISPLAY
+     ========================================= */
+
+.useless-wonderful__display {
+  display: grid;
+  place-items: center;
+
+  min-height: 330px;
+
+  padding: 40px;
+
+  background-image: radial-gradient(var(--color-line) 0.7px, transparent 0.7px);
+
+  background-size: 14px 14px;
+}
+
+.useless-wonderful__empty {
+  text-align: center;
+}
+
+.useless-wonderful__empty > span {
+  display: block;
+
+  margin-bottom: 14px;
+
+  color: var(--color-accent);
+
+  font-size: 1.5rem;
+}
+
+.useless-wonderful__empty p {
+  color: var(--color-muted);
+
+  font-family: var(--font-handwritten);
+
+  font-size: 1.1rem;
+
+  line-height: 1.5;
+
+  transform: rotate(-2deg);
+}
+
+/* =========================================
+     RESULTS
+     ========================================= */
+
+.wonder-result {
+  width: min(100%, 500px);
+
+  text-align: center;
+
+  animation: wonderAppear 260ms var(--ease-standard);
+}
+
+@keyframes wonderAppear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wonder-result__big {
+  display: block;
+
+  color: var(--color-text);
+
+  font-family: var(--font-mono);
+
+  font-size: clamp(2rem, 6vw, 4rem);
+
+  letter-spacing: -0.08em;
+}
+
+.wonder-result p {
+  margin-top: 18px;
+
+  color: var(--color-text);
+
+  font-size: var(--text-sm);
+
+  line-height: 1.7;
+}
+
+.wonder-result p strong {
+  color: var(--color-accent);
+}
+
+.wonder-result small {
+  display: block;
+
+  margin-top: 8px;
+
+  color: var(--color-muted);
+
+  font-family: var(--font-mono);
+
+  font-size: 0.58rem;
+}
+
+/* =========================================
+     ROCK
+     ========================================= */
+
+.wonder-rock {
+  display: grid;
+  place-items: center;
+
+  width: 90px;
+  height: 70px;
+
+  color: var(--color-muted);
+
+  background: var(--color-surface-soft);
+
+  border: 1px solid var(--color-line-strong);
+
+  border-radius: 45% 55% 50% 45%;
+
+  font-size: 1.2rem;
+
+  transform: rotate(-8deg);
+
+  box-shadow: 4px 5px 0 var(--color-line);
+}
+
+/* =========================================
+     PLANT
+     ========================================= */
+
+.wonder-plant {
+  font-size: 4rem;
+
+  transition: transform var(--duration-normal) var(--ease-spring);
+}
+
+.wonder-plant[data-growth="1"] {
+  transform: scale(1.08);
+}
+
+.wonder-plant[data-growth="2"] {
+  transform: scale(1.16);
+}
+
+.wonder-plant[data-growth="3"] {
+  transform: scale(1.24);
+}
+
+.wonder-plant[data-growth="4"] {
+  transform: scale(1.32);
+}
+
+.wonder-plant[data-growth="5"] {
+  transform: scale(1.4) rotate(-3deg);
+}
+
+/* =========================================
+     BOX
+     ========================================= */
+
+.wonder-box {
+  display: grid;
+  place-items: center;
+
+  width: 100px;
+  height: 100px;
+
+  color: var(--color-accent);
+
+  background: var(--color-surface);
+
+  border: 1px solid var(--color-line-strong);
+
+  box-shadow: 7px 7px 0 var(--color-line);
+
+  transform: rotate(2deg);
+}
+
+/* =========================================
+     ICON EFFECTS
+     ========================================= */
+
+.wonder-sparkle {
+  color: var(--color-accent);
+
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(8deg) scale(1.12);
+  }
+}
+
+.wonder-heart {
+  color: var(--color-accent);
+
+  animation: heartbeat 1.2s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  20% {
+    transform: scale(1.12);
+  }
+
+  35% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+/* =========================================
+     MOBILE
+     ========================================= */
+
+@media (max-width: 800px) {
+  .useless-wonderful__header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .useless-wonderful__objects {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .useless-wonderful__display {
+    min-height: 280px;
+
+    padding: 30px 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  .useless-wonderful__cabinet-top,
+  .useless-wonderful__footer {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 6px;
+  }
+
+  .useless-wonderful__objects {
+    grid-template-columns: repeat(2, 1fr);
+
+    padding: 12px;
+  }
+
+  .useless-wonderful__object {
+    padding: 14px 6px;
+  }
+}

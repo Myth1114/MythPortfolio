@@ -1,0 +1,295 @@
+/* =========================================
+   THINGS I FOUND
+   ========================================= */
+
+.internet-finds {
+  padding-block: var(--space-10) var(--space-16);
+}
+
+/* =========================================
+     HEADER
+     ========================================= */
+
+.internet-finds__header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+
+  gap: var(--space-8);
+
+  margin-bottom: var(--space-10);
+}
+
+.internet-finds__header h2 {
+  margin-top: var(--space-3);
+}
+
+.internet-finds__header h2 span {
+  color: var(--color-accent);
+}
+
+.internet-finds__intro {
+  max-width: 350px;
+
+  color: var(--color-muted);
+
+  font-size: var(--text-sm);
+  line-height: 1.75;
+}
+
+/* =========================================
+     GRID
+     ========================================= */
+
+.internet-finds__grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: var(--space-8);
+}
+
+/* =========================================
+     CARD
+     ========================================= */
+
+.internet-find {
+  min-width: 0;
+}
+
+.internet-find__paper {
+  position: relative;
+
+  min-height: 330px;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 24px;
+
+  background: var(--color-surface);
+
+  border: var(--border);
+  border-radius: var(--radius-sm);
+
+  box-shadow: var(--shadow-paper);
+
+  transform: rotate(-0.8deg);
+
+  transition: transform var(--duration-normal) var(--ease-spring),
+    box-shadow var(--duration-normal) var(--ease-standard);
+}
+
+.internet-find:nth-child(2) .internet-find__paper {
+  transform: rotate(0.8deg);
+}
+
+.internet-find:nth-child(3) .internet-find__paper {
+  transform: rotate(-0.35deg);
+}
+
+.internet-find:nth-child(4) .internet-find__paper {
+  transform: rotate(0.5deg);
+}
+
+.internet-find:nth-child(5) .internet-find__paper {
+  transform: rotate(-0.7deg);
+}
+
+.internet-find:nth-child(6) .internet-find__paper {
+  transform: rotate(0.7deg);
+}
+
+@media (hover: hover) {
+  .internet-find:hover .internet-find__paper {
+    transform: translateY(-6px) rotate(0deg);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+/* =========================================
+     TOP
+     ========================================= */
+
+.internet-find__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-right: 24px;
+
+  color: var(--color-muted);
+
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+}
+
+.internet-find__number {
+  color: var(--color-accent);
+}
+
+.internet-find__category {
+  letter-spacing: 0.08em;
+}
+
+/* =========================================
+     ICON
+     ========================================= */
+
+.internet-find__icon {
+  display: grid;
+  place-items: center;
+
+  width: 38px;
+  height: 38px;
+
+  margin-top: 28px;
+
+  color: var(--color-accent);
+
+  background: var(--color-surface-soft);
+
+  border: 1px solid var(--color-line);
+  border-radius: 50%;
+}
+
+/* =========================================
+     CONTENT
+     ========================================= */
+
+.internet-find__paper h3 {
+  max-width: 280px;
+
+  margin-top: 20px;
+
+  color: var(--color-text);
+
+  font-size: 1.25rem;
+  font-weight: var(--weight-medium);
+
+  line-height: 1.25;
+
+  letter-spacing: -0.025em;
+}
+
+.internet-find__paper p {
+  max-width: 300px;
+
+  margin-top: 12px;
+
+  color: var(--color-muted);
+
+  font-size: var(--text-sm);
+
+  line-height: 1.7;
+}
+
+/* =========================================
+     BOTTOM
+     ========================================= */
+
+.internet-find__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+.internet-find__domain {
+  max-width: 220px;
+
+  overflow: hidden;
+
+  color: var(--color-muted);
+
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.internet-find__bottom a {
+  display: grid;
+  place-items: center;
+
+  width: 34px;
+  height: 34px;
+
+  color: var(--color-text);
+
+  border: 1px solid var(--color-line-strong);
+  border-radius: 50%;
+
+  transition: color var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard);
+}
+
+.internet-find__bottom a:hover {
+  color: var(--color-surface);
+
+  background: var(--color-accent);
+
+  border-color: var(--color-accent);
+}
+
+/* =========================================
+     HANDWRITTEN NOTE
+     ========================================= */
+
+.internet-find__note {
+  position: absolute;
+
+  right: 22px;
+  bottom: 17px;
+
+  color: var(--color-accent);
+
+  font-size: 0.95rem;
+
+  transform: rotate(-4deg);
+
+  opacity: 0.8;
+}
+
+/* =========================================
+     TABLET
+     ========================================= */
+
+@media (max-width: 950px) {
+  .internet-finds__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* =========================================
+     MOBILE
+     ========================================= */
+
+@media (max-width: 700px) {
+  .internet-finds__header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .internet-finds__grid {
+    grid-template-columns: 1fr;
+
+    gap: var(--space-7);
+  }
+
+  .internet-find__paper,
+  .internet-find:nth-child(2) .internet-find__paper,
+  .internet-find:nth-child(3) .internet-find__paper,
+  .internet-find:nth-child(4) .internet-find__paper,
+  .internet-find:nth-child(5) .internet-find__paper,
+  .internet-find:nth-child(6) .internet-find__paper {
+    min-height: 300px;
+
+    transform: none;
+  }
+}

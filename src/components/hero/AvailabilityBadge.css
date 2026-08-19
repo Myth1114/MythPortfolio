@@ -1,0 +1,25 @@
+.availability-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: fit-content;
+  padding: 7px 12px;
+  color: var(--color-text-soft);
+  background: var(--color-surface);
+  border: var(--border);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-xs);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.02em;
+}
+
+.availability-badge__dot {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--color-success);
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--color-success) 14%, transparent);
+}

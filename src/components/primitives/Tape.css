@@ -1,0 +1,52 @@
+.tape {
+  position: absolute;
+  width: 76px;
+  height: 24px;
+  background: rgba(214, 196, 153, 0.72);
+  border: 1px solid rgba(130, 110, 70, 0.12);
+  box-shadow: 0 2px 5px rgba(50, 40, 25, 0.08);
+  transform: rotate(var(--tape-rotation));
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* =========================================
+     POSITIONS
+     ========================================= */
+
+.tape--top-center {
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(var(--tape-rotation));
+}
+
+.tape--top-left {
+  top: -9px;
+  left: 28px;
+}
+
+.tape--top-right {
+  top: -9px;
+  right: 28px;
+}
+
+.tape--bottom-left {
+  bottom: -9px;
+  left: 28px;
+}
+
+.tape--bottom-right {
+  bottom: -9px;
+  right: 28px;
+}
+
+/* =========================================
+     MOBILE
+     ========================================= */
+
+@media (max-width: 640px) {
+  .tape {
+    width: 64px;
+    height: 21px;
+  }
+}

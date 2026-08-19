@@ -1,0 +1,159 @@
+.thought-card {
+  position: relative;
+  width: 100%;
+}
+
+.thought-card__paper {
+  position: relative;
+  min-height: 360px;
+  padding: var(--space-8);
+  background: var(--color-surface);
+  border: var(--border);
+  box-shadow: var(--shadow);
+  overflow: visible;
+
+  transition: transform var(--duration-normal) var(--ease-spring),
+    box-shadow var(--duration-normal) var(--ease-standard);
+}
+
+.thought-card__paper::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 1px solid color-mix(in srgb, var(--color-line) 45%, transparent);
+  pointer-events: none;
+}
+
+.thought-card:hover .thought-card__paper {
+  transform: translateY(-5px) rotate(0deg);
+  box-shadow: 0 22px 55px rgba(35, 49, 58, 0.11);
+}
+
+/* HEADER */
+
+.thought-card__header {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-bottom: var(--space-5);
+
+  border-bottom: var(--border);
+}
+
+.thought-card__number {
+  color: var(--color-muted);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.08em;
+}
+
+.thought-card__mark {
+  color: var(--color-accent);
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+/* BODY */
+
+.thought-card__body {
+  position: relative;
+  z-index: 1;
+
+  padding-block: var(--space-8);
+}
+
+.thought-card__body h2 {
+  max-width: 520px;
+
+  margin: 0;
+
+  font-size: clamp(1.55rem, 2.4vw, 2.15rem);
+  font-weight: var(--weight-medium);
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+}
+
+.thought-card__body p {
+  max-width: 530px;
+
+  margin-top: var(--space-6);
+
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+  line-height: 1.8;
+}
+
+/* FOOTER */
+
+.thought-card__footer {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-top: var(--space-5);
+
+  border-top: var(--border);
+
+  color: var(--color-muted);
+  font-size: var(--text-xs);
+}
+
+/* EDITORIAL POSITIONING */
+
+.thought-card--left {
+  transform: rotate(-0.7deg);
+}
+
+.thought-card--right {
+  transform: rotate(0.8deg);
+}
+
+.thought-card--center {
+  transform: rotate(-0.25deg);
+}
+
+/* Hover must preserve the editorial rotation */
+
+.thought-card--left:hover .thought-card__paper {
+  transform: translateY(-5px) rotate(0.2deg);
+}
+
+.thought-card--right:hover .thought-card__paper {
+  transform: translateY(-5px) rotate(-0.2deg);
+}
+
+.thought-card--center:hover .thought-card__paper {
+  transform: translateY(-5px) rotate(0deg);
+}
+
+@media (max-width: 640px) {
+  .thought-card__paper {
+    min-height: auto;
+    padding: var(--space-6);
+  }
+
+  .thought-card__body {
+    padding-block: var(--space-7);
+  }
+
+  .thought-card__body h2 {
+    font-size: 1.55rem;
+  }
+
+  .thought-card__body p {
+    line-height: 1.7;
+  }
+
+  .thought-card--left,
+  .thought-card--right,
+  .thought-card--center {
+    transform: none;
+  }
+}

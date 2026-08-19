@@ -1,0 +1,115 @@
+.skill-group {
+  display: grid;
+
+  grid-template-columns: 80px 1fr;
+
+  gap: var(--space-8);
+
+  padding-block: var(--space-10);
+
+  border-bottom: var(--border);
+
+  transition: padding-left var(--duration-normal) var(--ease-spring),
+    background-color var(--duration-fast) var(--ease-standard);
+}
+
+.skill-group:first-child {
+  border-top: var(--border);
+}
+
+.skill-group:hover {
+  padding-left: var(--space-3);
+}
+
+/* =========================================
+     NUMBER
+     ========================================= */
+
+.skill-group__number {
+  color: var(--color-muted);
+
+  font-family: var(--font-mono);
+
+  font-size: var(--text-xs);
+
+  padding-top: 6px;
+}
+
+/* =========================================
+     HEADING
+     ========================================= */
+
+.skill-group__heading {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: var(--space-4);
+}
+
+.skill-group__heading h3 {
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+
+  font-weight: var(--weight-medium);
+
+  letter-spacing: -0.045em;
+}
+
+.skill-group__arrow {
+  color: var(--color-accent);
+
+  flex-shrink: 0;
+
+  transition: transform var(--duration-normal) var(--ease-spring);
+}
+
+.skill-group:hover .skill-group__arrow {
+  transform: translate(4px, -4px);
+}
+
+/* =========================================
+     DESCRIPTION
+     ========================================= */
+
+.skill-group__description {
+  max-width: 650px;
+
+  margin-top: var(--space-4);
+
+  color: var(--color-text-soft);
+
+  line-height: 1.7;
+}
+
+/* =========================================
+     TAGS
+     ========================================= */
+
+.skill-group__tags {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: var(--space-2);
+
+  margin-top: var(--space-6);
+}
+
+/* =========================================
+     MOBILE
+     ========================================= */
+
+@media (max-width: 600px) {
+  .skill-group {
+    grid-template-columns: 40px 1fr;
+
+    gap: var(--space-4);
+
+    padding-block: var(--space-8);
+  }
+
+  .skill-group:hover {
+    padding-left: 0;
+  }
+}
