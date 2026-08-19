@@ -37,7 +37,7 @@ export default async function handler(req, res) {
 
       // CHANGE THIS TO THE EMAIL WHERE YOU WANT
       // PORTFOLIO MESSAGES TO ARRIVE.
-      to: ["mythleshyadav114@gmail.com"],
+      to: ["mythlesh114@gmail.com"],
 
       replyTo: email,
 
