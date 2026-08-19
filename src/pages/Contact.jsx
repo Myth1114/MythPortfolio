@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { ArrowUpRight, Mail, MapPin, Send } from "lucide-react";
 
 import PageHeader from "../components/layout/PageHeader";
@@ -7,6 +8,69 @@ import Tape from "../components/primitives/Tape";
 import "./Contact.css";
 
 function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [status, setStatus] = useState("idle");
+  const [feedback, setFeedback] = useState("");
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+
+    setFormData((current) => ({
+      ...current,
+      [name]: value,
+    }));
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    if (status === "sending") {
+      return;
+    }
+
+    setStatus("sending");
+    setFeedback("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Unable to send your message.");
+      }
+
+      setStatus("success");
+      setFeedback("Message sent. I'll get back to you soon.");
+
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Contact form error:", error);
+
+      setStatus("error");
+      setFeedback(error.message || "Something went wrong. Please try again.");
+    }
+  }
+
   return (
     <main className="contact-page">
       <div className="container">
@@ -18,10 +82,6 @@ function Contact() {
         />
 
         <section className="contact-page__content">
-          {/* =========================================
-              LEFT — CONTACT INFORMATION
-              ========================================= */}
-
           <div className="contact-page__intro">
             <div className="contact-card">
               <Tape position="top-center" rotation={-3} />
@@ -85,10 +145,6 @@ function Contact() {
             </div>
           </div>
 
-          {/* =========================================
-              RIGHT — CONTACT FORM
-              ========================================= */}
-
           <div className="contact-form-card">
             <div className="contact-form-card__header">
               <div>
@@ -100,7 +156,7 @@ function Contact() {
               <span className="contact-form-card__number">01</span>
             </div>
 
-            <form className="contact-form">
+            <form className="contact-form" onSubmit={handleSubmit}>
               <div className="contact-form__field">
                 <label htmlFor="contact-name">Name</label>
 
@@ -110,6 +166,10 @@ function Contact() {
                   type="text"
                   placeholder="Your name"
                   autoComplete="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  maxLength={100}
                 />
               </div>
 
@@ -122,6 +182,10 @@ function Contact() {
                   type="email"
                   placeholder="you@example.com"
                   autoComplete="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  maxLength={200}
                 />
               </div>
 
@@ -133,6 +197,9 @@ function Contact() {
                   name="subject"
                   type="text"
                   placeholder="What are we talking about?"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  maxLength={200}
                 />
               </div>
 
@@ -144,23 +211,38 @@ function Contact() {
                   name="message"
                   rows="6"
                   placeholder="Tell me a little about it..."
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  maxLength={5000}
                 />
               </div>
 
-              <button type="submit" className="contact-form__submit">
+              <button
+                type="submit"
+                className="contact-form__submit"
+                disabled={status === "sending"}
+              >
                 <Send size={17} strokeWidth={1.5} />
 
-                <span>Send Message</span>
+                <span>
+                  {status === "sending" ? "Sending..." : "Send Message"}
+                </span>
 
                 <ArrowUpRight size={17} strokeWidth={1.5} />
               </button>
+
+              {feedback && (
+                <div
+                  className={`contact-form__feedback contact-form__feedback--${status}`}
+                  role={status === "error" ? "alert" : "status"}
+                >
+                  {feedback}
+                </div>
+              )}
             </form>
           </div>
         </section>
-
-        {/* =========================================
-            SOCIAL LINKS
-            ========================================= */}
 
         <section className="contact-page__social">
           <div className="contact-page__social-heading">
@@ -170,17 +252,21 @@ function Contact() {
           </div>
 
           <div className="contact-page__social-links">
-            <a href="#" target="_blank" rel="noreferrer">
+            <a
+              href="https://github.com/Myth1114"
+              target="_blank"
+              rel="noreferrer"
+            >
               GitHub
               <ArrowUpRight size={15} strokeWidth={1.4} />
             </a>
 
-            <a href="#" target="_blank" rel="noreferrer">
+            <a href="#">
               LinkedIn
               <ArrowUpRight size={15} strokeWidth={1.4} />
             </a>
 
-            <a href="#" target="_blank" rel="noreferrer">
+            <a href="#">
               Instagram
               <ArrowUpRight size={15} strokeWidth={1.4} />
             </a>

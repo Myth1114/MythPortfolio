@@ -9,10 +9,11 @@ function Home() {
   return (
     <>
       <Hero />
-      <GitHubStats />
-      <ProjectsSection />
       <AboutPreview />
+      <ProjectsSection />
+
       {/* <ContactCTA /> */}
+      <GitHubStats />
       <ContactSection />
     </>
   );
