@@ -33,6 +33,14 @@ function Footer() {
               GitHub
               <ArrowUpRight size={15} strokeWidth={1.6} />
             </a>
+            <a
+              href="https://www.instagram.com/hashtagmyth14/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Instagram
+              <ArrowUpRight size={15} strokeWidth={1.4} />
+            </a>
           </div>
 
           <button

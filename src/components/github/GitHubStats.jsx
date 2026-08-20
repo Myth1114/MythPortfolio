@@ -5,7 +5,6 @@ import Pin from "../primitives/Pin";
 
 import {
   getGitHubProfile,
-  getGitHubRepositories,
   getGitHubContributions,
 } from "../services/githubService";
 
@@ -13,7 +12,6 @@ import "./GitHubStats.css";
 
 function GitHubStats() {
   const [profile, setProfile] = useState(null);
-  const [repositories, setRepositories] = useState([]);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -23,15 +21,12 @@ function GitHubStats() {
   useEffect(() => {
     async function loadGitHubData() {
       try {
-        const [profileData, repositoryData, contributionData] =
-          await Promise.all([
-            getGitHubProfile(),
-            getGitHubRepositories(),
-            getGitHubContributions(),
-          ]);
+        const [profileData, contributionData] = await Promise.all([
+          getGitHubProfile(),
+          getGitHubContributions(),
+        ]);
 
         setProfile(profileData);
-        setRepositories(repositoryData);
         setContributions(contributionData);
       } catch (err) {
         console.error("GitHub Stats Error:", err);
@@ -43,11 +38,6 @@ function GitHubStats() {
 
     loadGitHubData();
   }, []);
-
-  const totalStars = repositories.reduce(
-    (total, repository) => total + (repository.stargazers_count || 0),
-    0
-  );
 
   return (
     <section className="github-stats">

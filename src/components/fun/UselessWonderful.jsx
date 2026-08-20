@@ -50,7 +50,7 @@ function UselessWonderful() {
   const [clicks, setClicks] = useState(0);
   const [plantWater, setPlantWater] = useState(0);
   const [better, setBetter] = useState(false);
-  const [mystery, setMystery] = useState("");
+  const [mysteryIndex, setMysteryIndex] = useState(-1);
 
   function handleWonder(id) {
     setActive(id);
@@ -68,10 +68,7 @@ function UselessWonderful() {
     }
 
     if (id === "mystery") {
-      const random =
-        mysteryMessages[Math.floor(Math.random() * mysteryMessages.length)];
-
-      setMystery(random);
+      setMysteryIndex((current) => (current + 1) % mysteryMessages.length);
     }
   }
 
@@ -196,7 +193,11 @@ function UselessWonderful() {
                   <Box size={42} strokeWidth={1.2} />
                 </div>
 
-                <p>{mystery || "Open the box."}</p>
+                <p>
+                  {mysteryIndex >= 0
+                    ? mysteryMessages[mysteryIndex]
+                    : "Open the box."}
+                </p>
 
                 <small>There is definitely something inside.</small>
               </div>

@@ -187,7 +187,7 @@ function Contact() {
                     id="contact-email"
                     name="email"
                     type="email"
-                    placeholder="you@example.com"
+                    placeholder="Your Email Address"
                     autoComplete="email"
                     value={formData.email}
                     onChange={handleChange}
