@@ -11,9 +11,12 @@ function IdentityCard() {
       <Pin position="top-right" color="accent" />
 
       <div className="identity-card__image">
-        <div className="identity-card__placeholder">
-          <span>YOUR PHOTO</span>
-        </div>
+        <img
+          src="/images/mithilesh.png"
+          alt="Portrait of Mithilesh Yadav"
+          loading="eager"
+          fetchPriority="high"
+        />
       </div>
 
       <div className="identity-card__info">

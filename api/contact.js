@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { name, email, subject, message } = req.body;
+    const { name, email, subject, message } = req.body || {};
 
     if (!name?.trim() || !email?.trim() || !message?.trim()) {
       return res.status(400).json({
@@ -18,7 +18,12 @@ export default async function handler(req, res) {
       });
     }
 
-    if (name.length > 100 || email.length > 200 || message.length > 5000) {
+    if (
+      name.length > 100 ||
+      email.length > 200 ||
+      (subject && subject.length > 200) ||
+      message.length > 5000
+    ) {
       return res.status(400).json({
         error: "One or more fields are too long.",
       });
@@ -33,11 +38,8 @@ export default async function handler(req, res) {
     }
 
     const { data, error } = await resend.emails.send({
-      from: "Portfolio <onboarding@resend.dev>",
-
-      // CHANGE THIS TO THE EMAIL WHERE YOU WANT
-      // PORTFOLIO MESSAGES TO ARRIVE.
-      to: ["mythlesh114@gmail.com"],
+      from: "Mithilesh Portfolio <portfolio@mithileshyadav114.com.np>",
+      to: ["hashtagmmyth114@gmail.com"],
 
       replyTo: email,
 

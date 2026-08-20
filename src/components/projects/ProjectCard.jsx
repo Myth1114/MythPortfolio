@@ -13,14 +13,22 @@ function ProjectCard({ project, onOpen }) {
         <Pin position="top-right" color="accent" />
 
         <div className="project-card__top">
-          <span className="project-card__number">{project.number}</span>
-
-          <span className="project-card__year">{project.year}</span>
+          <span>{project.number}</span>
+          <span>{project.year}</span>
         </div>
 
         <div className="project-card__preview">
-          <div className="project-card__preview-inner">
-            <span>{project.title}</span>
+          <div className="project-card__preview-heading">
+            <span>{project.category}</span>
+            <span>{project.type}</span>
+          </div>
+
+          <div className="project-card__preview-main">
+            <span>{project.number}</span>
+
+            <h3>{project.title}</h3>
+
+            <p>{project.role}</p>
           </div>
         </div>
 
@@ -48,7 +56,7 @@ function ProjectCard({ project, onOpen }) {
           >
             <span>View project</span>
 
-            <ArrowUpRight size={17} strokeWidth={1.7} />
+            <ArrowUpRight size={16} strokeWidth={1.6} />
           </button>
         </div>
       </PaperCard>

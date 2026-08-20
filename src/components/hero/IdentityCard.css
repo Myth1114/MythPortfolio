@@ -20,15 +20,20 @@
      IMAGE
      ========================================= */
 
-.identity-card__image {
+.identity-card__image img {
   width: 100%;
-  aspect-ratio: 4 / 4.8;
-  overflow: hidden;
-  background: var(--color-surface-soft);
-  border-radius: var(--radius-xs);
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform var(--duration-normal) var(--ease-spring),
+    filter var(--duration-normal) var(--ease-standard);
 }
 
-.identity-card__placeholder {
+.identity-card:hover .identity-card__image img {
+  transform: scale(1.025);
+}
+/* .identity-card__placeholder {
   width: 100%;
   height: 100%;
   display: grid;
@@ -38,7 +43,7 @@
   font-weight: var(--weight-semibold);
 
   letter-spacing: 0.12em;
-}
+} */
 
 /* =========================================
      INFO

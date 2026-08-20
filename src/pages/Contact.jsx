@@ -120,8 +120,8 @@ function Contact() {
                 <div className="contact-card__email">
                   <Mail size={18} strokeWidth={1.5} />
 
-                  <a href="mailto:hello@example.com">
-                    hello@example.com
+                  <a href="mailto:hashtagmyth114@gmail.com">
+                    hashtagmyth114@gmail.com
                     <ArrowUpRight size={16} strokeWidth={1.5} />
                   </a>
                 </div>
@@ -146,7 +146,7 @@ function Contact() {
 
                   <div>
                     <span>EMAIL</span>
-                    <strong>hello@example.com</strong>
+                    <strong>hashtagmyth114@gmail.com</strong>
                   </div>
                 </div>
               </div>
@@ -254,10 +254,8 @@ function Contact() {
           <section className="contact-page__social">
             <div className="contact-page__social-heading">
               <span className="eyebrow">ELSEWHERE</span>
-
               <p>You can also find me around the internet.</p>
             </div>
-
             <div className="contact-page__social-links">
               <a
                 href="https://github.com/Myth1114"
@@ -268,12 +266,16 @@ function Contact() {
                 <ArrowUpRight size={15} strokeWidth={1.4} />
               </a>
 
-              <a href="#">
+              {/* <a href="#">
                 LinkedIn
                 <ArrowUpRight size={15} strokeWidth={1.4} />
-              </a>
+              </a> */}
 
-              <a href="#">
+              <a
+                href="https://www.instagram.com/hashtagmyth14/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 Instagram
                 <ArrowUpRight size={15} strokeWidth={1.4} />
               </a>

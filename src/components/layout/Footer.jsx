@@ -20,17 +20,16 @@ function Footer() {
           </div>
 
           <div className="site-footer__links">
-            <a href="mailto:mythleshyadav114@gmail.com">
+            <a href="mailto:hashtagmyth114@gmail.com">
               Email
               <ArrowUpRight size={15} strokeWidth={1.6} />
             </a>
 
-            <a href="#" target="_blank" rel="noreferrer">
-              LinkedIn
-              <ArrowUpRight size={15} strokeWidth={1.6} />
-            </a>
-
-            <a href="#" target="_blank" rel="noreferrer">
+            <a
+              href="https://github.com/Myth1114"
+              target="_blank"
+              rel="noreferrer"
+            >
               GitHub
               <ArrowUpRight size={15} strokeWidth={1.6} />
             </a>
