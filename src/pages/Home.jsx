@@ -13,12 +13,12 @@ function Home() {
         description="Mithilesh Yadav is a frontend developer based in Nepal, building thoughtful, responsive digital experiences with React, JavaScript and modern web technologies."
         path="/"
       />
+
       <Hero />
       <AboutPreview />
       <ProjectsSection />
-
-      {/* <ContactCTA /> */}
       <GitHubStats />
+
       <ContactSection />
     </>
   );

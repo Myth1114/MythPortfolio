@@ -1,14 +1,57 @@
+import { motion, useReducedMotion } from "motion/react";
+
 import "./PageHeader.css";
 
+const itemVariants = {
+  hidden: {
+    opacity: 0,
+    y: 22,
+  },
+
+  visible: {
+    opacity: 1,
+    y: 0,
+  },
+};
+
 function PageHeader({ eyebrow, title, titleAccent, description }) {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
-    <header className="page-header">
-      <div className="page-header__eyebrow">
+    <motion.header
+      className="page-header"
+      initial="hidden"
+      animate="visible"
+      variants={{
+        hidden: {},
+        visible: {
+          transition: {
+            staggerChildren: shouldReduceMotion ? 0 : 0.1,
+            delayChildren: shouldReduceMotion ? 0 : 0.08,
+          },
+        },
+      }}
+    >
+      <motion.div
+        className="page-header__eyebrow"
+        variants={shouldReduceMotion ? undefined : itemVariants}
+        transition={{
+          duration: 0.6,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+      >
         <span className="eyebrow">{eyebrow}</span>
-      </div>
+      </motion.div>
 
       <div className="page-header__content">
-        <h1 className="page-header__title">
+        <motion.h1
+          className="page-header__title"
+          variants={shouldReduceMotion ? undefined : itemVariants}
+          transition={{
+            duration: 0.75,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
           {title}
 
           {titleAccent && (
@@ -17,13 +60,22 @@ function PageHeader({ eyebrow, title, titleAccent, description }) {
               <span>{titleAccent}</span>
             </>
           )}
-        </h1>
+        </motion.h1>
 
         {description && (
-          <p className="page-header__description">{description}</p>
+          <motion.p
+            className="page-header__description"
+            variants={shouldReduceMotion ? undefined : itemVariants}
+            transition={{
+              duration: 0.65,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
+            {description}
+          </motion.p>
         )}
       </div>
-    </header>
+    </motion.header>
   );
 }
 

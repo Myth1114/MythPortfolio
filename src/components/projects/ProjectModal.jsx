@@ -1,10 +1,12 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 
 import { ArrowUpRight, X } from "lucide-react";
 
 import "./ProjectModal.css";
 
 function ProjectModal({ project, onClose }) {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <AnimatePresence>
       {project && (
@@ -21,29 +23,40 @@ function ProjectModal({ project, onClose }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           />
-
           <motion.div
             className="project-modal__dialog"
             role="dialog"
             aria-modal="true"
             aria-label={`${project.title} project details`}
-            initial={{
-              opacity: 0,
-              y: 30,
-              scale: 0.97,
-            }}
+            initial={
+              shouldReduceMotion
+                ? {
+                    opacity: 0,
+                  }
+                : {
+                    opacity: 0,
+                    y: 35,
+                    scale: 0.97,
+                  }
+            }
             animate={{
               opacity: 1,
               y: 0,
               scale: 1,
             }}
-            exit={{
-              opacity: 0,
-              y: 20,
-              scale: 0.98,
-            }}
+            exit={
+              shouldReduceMotion
+                ? {
+                    opacity: 0,
+                  }
+                : {
+                    opacity: 0,
+                    y: 20,
+                    scale: 0.98,
+                  }
+            }
             transition={{
-              duration: 0.3,
+              duration: shouldReduceMotion ? 0.15 : 0.4,
               ease: [0.22, 1, 0.36, 1],
             }}
           >
@@ -67,19 +80,16 @@ function ProjectModal({ project, onClose }) {
             <div className="project-modal__details">
               <div>
                 <span>Role</span>
-
                 <strong>{project.role}</strong>
               </div>
 
               <div>
                 <span>Type</span>
-
                 <strong>{project.type}</strong>
               </div>
 
               <div>
                 <span>Year</span>
-
                 <strong>{project.year}</strong>
               </div>
             </div>
