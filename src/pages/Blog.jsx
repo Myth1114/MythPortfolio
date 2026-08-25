@@ -1,3 +1,5 @@
+import { motion, useReducedMotion } from "motion/react";
+
 import blog from "../data/blog";
 
 import Pin from "../components/primitives/Pin";
@@ -8,7 +10,21 @@ import SEO from "../components/seo/SEO";
 
 import "./Blog.css";
 
+const articleVariants = {
+  hidden: {
+    opacity: 0,
+    y: 24,
+  },
+
+  visible: {
+    opacity: 1,
+    y: 0,
+  },
+};
+
 function Blog() {
+  const shouldReduceMotion = useReducedMotion();
+
   const featuredArticle = blog.find((article) => article.featured);
 
   const articles = blog.filter((article) => !article.featured);
@@ -20,6 +36,7 @@ function Blog() {
         description="Articles and longer-form writing by Mithilesh Yadav about development, technology, creativity, experiments and lessons from building."
         path="/blog"
       />
+
       <main className="blog-page">
         <div className="container">
           <PageHeader
@@ -29,8 +46,34 @@ function Blog() {
             description="Notes on frontend development, building for the web, AI and the changing tools around us."
           />
 
+          {/* FEATURED ARTICLE */}
+
           {featuredArticle && (
-            <section className="blog-page__featured">
+            <motion.section
+              className="blog-page__featured"
+              initial={
+                shouldReduceMotion
+                  ? false
+                  : {
+                      opacity: 0,
+                      y: 28,
+                      scale: 0.99,
+                    }
+              }
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.3,
+              }}
+              transition={{
+                duration: 0.75,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
               <article className="blog-page__featured-card">
                 <Pin position="top-right" color="accent" />
 
@@ -52,11 +95,35 @@ function Blog() {
                   <span>{featuredArticle.readingTime}</span>
                 </div>
               </article>
-            </section>
+            </motion.section>
           )}
 
+          {/* ARTICLES */}
+
           <section className="blog-page__articles">
-            <div className="blog-page__articles-header">
+            <motion.div
+              className="blog-page__articles-header"
+              initial={
+                shouldReduceMotion
+                  ? false
+                  : {
+                      opacity: 0,
+                      y: 22,
+                    }
+              }
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.4,
+              }}
+              transition={{
+                duration: 0.7,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
               <div>
                 <span className="eyebrow">Field notes</span>
 
@@ -71,13 +138,40 @@ function Blog() {
                 Shorter pieces about code, tools, interfaces and the strange new
                 era we're building in.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="blog-page__grid">
+            <motion.div
+              className="blog-page__grid"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{
+                once: true,
+                amount: 0.08,
+              }}
+              variants={{
+                hidden: {},
+
+                visible: {
+                  transition: {
+                    staggerChildren: shouldReduceMotion ? 0 : 0.11,
+                    delayChildren: shouldReduceMotion ? 0 : 0.05,
+                  },
+                },
+              }}
+            >
               {articles.map((article, index) => (
-                <BlogCard key={article.id} article={article} index={index} />
+                <motion.div
+                  key={article.id}
+                  variants={shouldReduceMotion ? undefined : articleVariants}
+                  transition={{
+                    duration: 0.68,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                >
+                  <BlogCard article={article} index={index} />
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </section>
         </div>
       </main>

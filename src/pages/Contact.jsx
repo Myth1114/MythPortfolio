@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ArrowUpRight, Mail, MapPin, Send } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
 
 import PageHeader from "../components/layout/PageHeader";
 import Pin from "../components/primitives/Pin";
@@ -18,6 +19,8 @@ function Contact() {
 
   const [status, setStatus] = useState("idle");
   const [feedback, setFeedback] = useState("");
+
+  const shouldReduceMotion = useReducedMotion();
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -79,6 +82,7 @@ function Contact() {
         description="Get in touch with Mithilesh Yadav about web development, projects, collaborations, ideas or simply to say hello."
         path="/contact"
       />
+
       <main className="contact-page">
         <div className="container">
           <PageHeader
@@ -89,9 +93,34 @@ function Contact() {
           />
 
           <section className="contact-page__content">
-            <div className="contact-page__intro">
+            {/* LEFT SIDE */}
+
+            <motion.div
+              className="contact-page__intro"
+              initial={
+                shouldReduceMotion
+                  ? false
+                  : {
+                      opacity: 0,
+                      x: -28,
+                    }
+              }
+              whileInView={{
+                opacity: 1,
+                x: 0,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.2,
+              }}
+              transition={{
+                duration: 0.75,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
               <div className="contact-card">
                 <Tape position="top-center" rotation={-3} />
+
                 <Pin position="top-right" color="accent" />
 
                 <div className="contact-card__top">
@@ -131,7 +160,30 @@ function Contact() {
                 </span>
               </div>
 
-              <div className="contact-details">
+              <motion.div
+                className="contact-details"
+                initial={
+                  shouldReduceMotion
+                    ? false
+                    : {
+                        opacity: 0,
+                        y: 16,
+                      }
+                }
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{
+                  once: true,
+                  amount: 0.4,
+                }}
+                transition={{
+                  duration: 0.6,
+                  delay: shouldReduceMotion ? 0 : 0.12,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+              >
                 <div className="contact-detail">
                   <MapPin size={17} strokeWidth={1.4} />
 
@@ -149,10 +201,35 @@ function Contact() {
                     <strong>hashtagmyth114@gmail.com</strong>
                   </div>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
-            <div className="contact-form-card">
+            {/* FORM */}
+
+            <motion.div
+              className="contact-form-card"
+              initial={
+                shouldReduceMotion
+                  ? false
+                  : {
+                      opacity: 0,
+                      x: 28,
+                    }
+              }
+              whileInView={{
+                opacity: 1,
+                x: 0,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.2,
+              }}
+              transition={{
+                duration: 0.75,
+                delay: shouldReduceMotion ? 0 : 0.08,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
               <div className="contact-form-card__header">
                 <div>
                   <span className="eyebrow">SEND A MESSAGE</span>
@@ -240,22 +317,63 @@ function Contact() {
                 </button>
 
                 {feedback && (
-                  <div
+                  <motion.div
                     className={`contact-form__feedback contact-form__feedback--${status}`}
                     role={status === "error" ? "alert" : "status"}
+                    initial={
+                      shouldReduceMotion
+                        ? false
+                        : {
+                            opacity: 0,
+                            y: 8,
+                          }
+                    }
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                    }}
+                    transition={{
+                      duration: 0.35,
+                    }}
                   >
                     {feedback}
-                  </div>
+                  </motion.div>
                 )}
               </form>
-            </div>
+            </motion.div>
           </section>
 
-          <section className="contact-page__social">
+          {/* SOCIAL */}
+
+          <motion.section
+            className="contact-page__social"
+            initial={
+              shouldReduceMotion
+                ? false
+                : {
+                    opacity: 0,
+                    y: 18,
+                  }
+            }
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.45,
+            }}
+            transition={{
+              duration: 0.65,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
             <div className="contact-page__social-heading">
               <span className="eyebrow">ELSEWHERE</span>
+
               <p>You can also find me around the internet.</p>
             </div>
+
             <div className="contact-page__social-links">
               <a
                 href="https://github.com/Myth1114"
@@ -266,11 +384,6 @@ function Contact() {
                 <ArrowUpRight size={15} strokeWidth={1.4} />
               </a>
 
-              {/* <a href="#">
-                LinkedIn
-                <ArrowUpRight size={15} strokeWidth={1.4} />
-              </a> */}
-
               <a
                 href="https://www.instagram.com/hashtagmyth14/"
                 target="_blank"
@@ -280,7 +393,7 @@ function Contact() {
                 <ArrowUpRight size={15} strokeWidth={1.4} />
               </a>
             </div>
-          </section>
+          </motion.section>
         </div>
       </main>
     </>

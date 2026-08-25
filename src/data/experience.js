@@ -1,7 +1,7 @@
 const experience = [
   {
     id: "the-apex-global",
-    period: "2026 — Present",
+    period: "Feb 2026 — Present",
     company: "The Apex Global Pvt. Ltd.",
     type: "Current",
     role: "Technology & Digital Lead",
@@ -37,7 +37,7 @@ const experience = [
 
   {
     id: "akdroid",
-    period: "Feb 2021 — 2024",
+    period: "Feb 2021 — Dec 2024",
     company: "Akdroid Nepal Pvt. Ltd.",
     type: "Professional",
     role: "Junior Web Developer → Frontend Developer",

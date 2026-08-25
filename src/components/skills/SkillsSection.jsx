@@ -1,3 +1,5 @@
+import { motion, useReducedMotion } from "motion/react";
+
 import PersonalNote from "../about/PersonalNote";
 
 import SkillGroup from "./SkillGroup";
@@ -43,11 +45,47 @@ const skillGroups = [
   },
 ];
 
+const skillVariants = {
+  hidden: {
+    opacity: 0,
+    y: 22,
+  },
+
+  visible: {
+    opacity: 1,
+    y: 0,
+  },
+};
+
 function SkillsSection() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section className="skills-section section">
       <div className="container">
-        <div className="skills-section__header">
+        <motion.div
+          className="skills-section__header"
+          initial={
+            shouldReduceMotion
+              ? false
+              : {
+                  opacity: 0,
+                  y: 22,
+                }
+          }
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.35,
+          }}
+          transition={{
+            duration: 0.75,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
           <div>
             <span className="eyebrow">05 — Capabilities</span>
 
@@ -62,17 +100,68 @@ function SkillsSection() {
             A collection of technologies, practices and ways of thinking that
             shape how I build.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="skills-section__list">
+        <motion.div
+          className="skills-section__list"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{
+            once: true,
+            amount: 0.08,
+          }}
+          variants={{
+            hidden: {},
+
+            visible: {
+              transition: {
+                staggerChildren: shouldReduceMotion ? 0 : 0.11,
+                delayChildren: shouldReduceMotion ? 0 : 0.05,
+              },
+            },
+          }}
+        >
           {skillGroups.map((group) => (
-            <SkillGroup key={group.number} {...group} />
+            <motion.div
+              key={group.number}
+              variants={shouldReduceMotion ? undefined : skillVariants}
+              transition={{
+                duration: 0.68,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
+              <SkillGroup {...group} />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="skills-section__note">
+        <motion.div
+          className="skills-section__note"
+          initial={
+            shouldReduceMotion
+              ? false
+              : {
+                  opacity: 0,
+                  y: 18,
+                  scale: 0.99,
+                }
+          }
+          whileInView={{
+            opacity: 1,
+            y: 0,
+            scale: 1,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.4,
+          }}
+          transition={{
+            duration: 0.7,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
           <PersonalNote />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -185,3 +185,6 @@
     justify-content: space-between;
   }
 }
+.fun-page__choose-target {
+  scroll-margin-top: 100px;
+}

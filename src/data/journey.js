@@ -45,7 +45,7 @@ const journey = [
 
   {
     id: "frontend",
-    year: "2021 — 2023",
+    year: "2021 — 2024",
     period: "Frontend development",
     title: "Learning to build things properly.",
     category: "Development",
@@ -56,7 +56,7 @@ const journey = [
 
   {
     id: "technology",
-    year: "2024 — 2025",
+    year: "2025 — 2026",
     period: "Beyond the frontend",
     title: "Technology became bigger than code.",
     category: "Technology",
@@ -67,7 +67,7 @@ const journey = [
 
   {
     id: "leadership",
-    year: "2025 — 2026",
+    year: "2026",
     period: "Technology & digital leadership",
     title: "Thinking in systems.",
     category: "Leadership",
