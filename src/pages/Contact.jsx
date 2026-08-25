@@ -15,6 +15,7 @@ function Contact() {
     email: "",
     subject: "",
     message: "",
+    website: "",
   });
 
   const [status, setStatus] = useState("idle");
@@ -66,6 +67,7 @@ function Contact() {
         email: "",
         subject: "",
         message: "",
+        website: "",
       });
     } catch (error) {
       console.error("Contact form error:", error);
@@ -315,7 +317,19 @@ function Contact() {
 
                   <ArrowUpRight size={17} strokeWidth={1.5} />
                 </button>
+                <div className="contact-form__honeypot" aria-hidden="true">
+                  <label htmlFor="contact-website">Website</label>
 
+                  <input
+                    id="contact-website"
+                    name="website"
+                    type="text"
+                    tabIndex="-1"
+                    autoComplete="off"
+                    value={formData.website}
+                    onChange={handleChange}
+                  />
+                </div>
                 {feedback && (
                   <motion.div
                     className={`contact-form__feedback contact-form__feedback--${status}`}

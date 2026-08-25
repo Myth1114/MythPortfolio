@@ -1,6 +1,7 @@
 /* global process */
 
 import { Resend } from "resend";
+
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req, res) {
@@ -10,20 +11,40 @@ export default async function handler(req, res) {
     });
   }
 
-  try {
-    const { name, email, subject, message } = req.body || {};
+  const contentType = req.headers["content-type"] || "";
 
-    if (!name?.trim() || !email?.trim() || !message?.trim()) {
+  if (!contentType.includes("application/json")) {
+    return res.status(415).json({
+      error: "Unsupported content type.",
+    });
+  }
+
+  try {
+    const { name, email, subject, message, website } = req.body || {};
+
+    // Honeypot: silently accept obvious bot submissions.
+    if (website?.trim()) {
+      return res.status(200).json({
+        success: true,
+      });
+    }
+
+    const cleanName = name?.trim();
+    const cleanEmail = email?.trim().toLowerCase();
+    const cleanSubject = subject?.trim();
+    const cleanMessage = message?.trim();
+
+    if (!cleanName || !cleanEmail || !cleanMessage) {
       return res.status(400).json({
         error: "Name, email and message are required.",
       });
     }
 
     if (
-      name.length > 100 ||
-      email.length > 200 ||
-      (subject && subject.length > 200) ||
-      message.length > 5000
+      cleanName.length > 100 ||
+      cleanEmail.length > 200 ||
+      (cleanSubject && cleanSubject.length > 200) ||
+      cleanMessage.length > 5000
     ) {
       return res.status(400).json({
         error: "One or more fields are too long.",
@@ -32,7 +53,7 @@ export default async function handler(req, res) {
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!emailPattern.test(email)) {
+    if (!emailPattern.test(cleanEmail)) {
       return res.status(400).json({
         error: "Please enter a valid email address.",
       });
@@ -40,13 +61,14 @@ export default async function handler(req, res) {
 
     const { data, error } = await resend.emails.send({
       from: "Mithilesh Portfolio <portfolio@mithileshyadav114.com.np>",
+
       to: ["mythlesh114@gmail.com"],
 
-      replyTo: email,
+      replyTo: cleanEmail,
 
-      subject: subject?.trim()
-        ? `Portfolio: ${subject.trim()}`
-        : `Portfolio message from ${name.trim()}`,
+      subject: cleanSubject
+        ? `Portfolio: ${cleanSubject}`
+        : `Portfolio message from ${cleanName}`,
 
       html: `
         <div style="font-family: Arial, sans-serif; line-height: 1.6;">
@@ -54,22 +76,22 @@ export default async function handler(req, res) {
 
           <p>
             <strong>Name:</strong><br>
-            ${escapeHtml(name)}
+            ${escapeHtml(cleanName)}
           </p>
 
           <p>
             <strong>Email:</strong><br>
-            ${escapeHtml(email)}
+            ${escapeHtml(cleanEmail)}
           </p>
 
           <p>
             <strong>Subject:</strong><br>
-            ${escapeHtml(subject || "No subject")}
+            ${escapeHtml(cleanSubject || "No subject")}
           </p>
 
           <p>
             <strong>Message:</strong><br>
-            ${escapeHtml(message).replace(/\n/g, "<br>")}
+            ${escapeHtml(cleanMessage).replace(/\n/g, "<br>")}
           </p>
         </div>
       `,

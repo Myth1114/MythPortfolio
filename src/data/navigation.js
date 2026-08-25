@@ -12,8 +12,8 @@ export const primaryNavigation = [
     path: "/journey",
   },
   {
-    label: "Tools",
-    path: "/tools",
+    label: "Fun",
+    path: "/fun",
   },
   {
     label: "Thoughts",
@@ -27,13 +27,14 @@ export const primaryNavigation = [
 
 export const menuNavigation = [
   {
-    label: "Work",
-    path: "/work",
-  },
-  {
     label: "About",
     path: "/about",
   },
+  {
+    label: "Work",
+    path: "/work",
+  },
+
   {
     label: "Journey",
     path: "/journey",
