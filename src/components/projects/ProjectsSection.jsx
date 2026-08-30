@@ -85,7 +85,6 @@ function ProjectsSection() {
           }}
           variants={{
             hidden: {},
-
             visible: {
               transition: {
                 staggerChildren: shouldReduceMotion ? 0 : 0.14,

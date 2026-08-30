@@ -28,10 +28,31 @@ const projects = [
     featured: true,
     liveUrl: "https://shikshasewa.com/",
   },
-
+  {
+    id: "life-in-numbers",
+    number: "03",
+    title: "Life in Numbers",
+    category: "Interactive Experience",
+    type: "Data Visualization Website",
+    role: "Design & Frontend Development",
+    year: "2026",
+    description:
+      "A private, scroll-driven visual story that transforms a date of birth into days, weeks, heartbeats, natural cycles, and reflections on time.",
+    technologies: [
+      "React",
+      "Vite",
+      "JavaScript",
+      "CSS",
+      "GSAP",
+      "Canvas API",
+      "Vitest",
+    ],
+    featured: true,
+    liveUrl: "https://life-in-numbers-ecru.vercel.app/",
+  },
   {
     id: "zinniprime",
-    number: "03",
+    number: "04",
     title: "ZinniPrime",
     category: "E-commerce",
     type: "Web Application",
@@ -40,13 +61,13 @@ const projects = [
     description:
       "A multivendor instant-delivery ecommerce application. Contributed to the frontend experience and developed reusable React components across the application.",
     technologies: ["ReactJS", "JavaScript", "Responsive UI", "Components"],
-    featured: true,
+    featured: false,
     liveUrl: null,
   },
 
   {
     id: "life-development-centre",
-    number: "04",
+    number: "05",
     title: "Life Development Centre",
     category: "Social Service",
     type: "Website",
@@ -61,7 +82,7 @@ const projects = [
 
   {
     id: "avaya-machine",
-    number: "05",
+    number: "06",
     title: "Avaya Machine",
     category: "Corporate",
     type: "Website",
@@ -76,7 +97,7 @@ const projects = [
 
   {
     id: "nepal-albaik",
-    number: "06",
+    number: "07",
     title: "Nepal Albaik",
     category: "Restaurant",
     type: "Website",
