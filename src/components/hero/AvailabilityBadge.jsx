@@ -1,6 +1,6 @@
 import "./AvailabilityBadge.css";
 
-function AvailabilityBadge({ children = "alive" }) {
+function AvailabilityBadge({ children = "online" }) {
   return (
     <div className="availability-badge">
       <span className="availability-badge__dot" />

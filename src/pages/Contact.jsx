@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ArrowUpRight, Mail, MapPin, Send } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 
@@ -22,6 +22,7 @@ function Contact() {
   const [feedback, setFeedback] = useState("");
 
   const shouldReduceMotion = useReducedMotion();
+  const feedbackRef = useRef(null);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -69,11 +70,17 @@ function Contact() {
         message: "",
         website: "",
       });
+      window.setTimeout(() => {
+        feedbackRef.current?.focus();
+      }, 0);
     } catch (error) {
       console.error("Contact form error:", error);
 
       setStatus("error");
       setFeedback(error.message || "Something went wrong. Please try again.");
+      window.setTimeout(() => {
+        feedbackRef.current?.focus();
+      }, 0);
     }
   }
 
@@ -242,7 +249,11 @@ function Contact() {
                 <span className="contact-form-card__number">01</span>
               </div>
 
-              <form className="contact-form" onSubmit={handleSubmit}>
+              <form
+                className="contact-form"
+                aria-label="Contact form"
+                onSubmit={handleSubmit}
+              >
                 <div className="contact-form__field">
                   <label htmlFor="contact-name">Name</label>
 
@@ -297,6 +308,7 @@ function Contact() {
                     name="message"
                     rows="6"
                     placeholder="Tell me a little about it..."
+                    autoComplete="off"
                     value={formData.message}
                     onChange={handleChange}
                     required
@@ -308,14 +320,19 @@ function Contact() {
                   type="submit"
                   className="contact-form__submit"
                   disabled={status === "sending"}
+                  aria-disabled={status === "sending"}
                 >
-                  <Send size={17} strokeWidth={1.5} />
+                  <Send size={17} strokeWidth={1.5} aria-hidden="true" />
 
                   <span>
                     {status === "sending" ? "Sending..." : "Send Message"}
                   </span>
 
-                  <ArrowUpRight size={17} strokeWidth={1.5} />
+                  <ArrowUpRight
+                    size={17}
+                    strokeWidth={1.5}
+                    aria-hidden="true"
+                  />
                 </button>
                 <div className="contact-form__honeypot" aria-hidden="true">
                   <label htmlFor="contact-website">Website</label>
@@ -332,8 +349,11 @@ function Contact() {
                 </div>
                 {feedback && (
                   <motion.div
+                    ref={feedbackRef}
                     className={`contact-form__feedback contact-form__feedback--${status}`}
                     role={status === "error" ? "alert" : "status"}
+                    aria-live={status === "error" ? "assertive" : "polite"}
+                    tabIndex={-1}
                     initial={
                       shouldReduceMotion
                         ? false
@@ -347,7 +367,7 @@ function Contact() {
                       y: 0,
                     }}
                     transition={{
-                      duration: 0.35,
+                      duration: shouldReduceMotion ? 0 : 0.35,
                     }}
                   >
                     {feedback}
@@ -392,19 +412,19 @@ function Contact() {
               <a
                 href="https://github.com/Myth1114"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
               >
                 GitHub
-                <ArrowUpRight size={15} strokeWidth={1.4} />
+                <ArrowUpRight size={15} strokeWidth={1.4} aria-hidden="true" />
               </a>
 
               <a
                 href="https://www.instagram.com/hashtagmyth14/"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
               >
                 Instagram
-                <ArrowUpRight size={15} strokeWidth={1.4} />
+                <ArrowUpRight size={15} strokeWidth={1.4} aria-hidden="true" />
               </a>
             </div>
           </motion.section>

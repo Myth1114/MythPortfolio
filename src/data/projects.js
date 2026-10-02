@@ -1,7 +1,66 @@
 const projects = [
   {
-    id: "the-apex-global",
+    id: "thesis-universe",
     number: "01",
+    title: "Thesis Universe Nepal",
+    category: "Academic Research Support",
+    type: "Website",
+    role: "Frontend Development & UI Animation",
+    year: "2026",
+    description:
+      "A modern academic research support website designed to guide students through every stage of their research journey, from topic selection and proposal writing to methodology, data analysis and final submission. Built with a clean, responsive interface, interactive visual elements and GSAP-powered animations.",
+    technologies: [
+      "React",
+      "JavaScript",
+      "CSS",
+      "GSAP",
+      "SEO",
+      "React Router",
+      "Responsive Design",
+    ],
+    featured: true,
+    liveUrl: "https://www.thesisuniverse.com/",
+  },
+  {
+    id: "ak-and-associates",
+    number: "02",
+    title: "AK and Associates",
+    category: "Accounting & Business Advisory",
+    type: "Website",
+    role: "Frontend Development",
+    year: "2026",
+    description:
+      "A modern accounting and business advisory website built to present professional services, industry expertise and practical financial guidance through a clean, responsive digital experience.",
+    technologies: [
+      "React",
+      "JavaScript",
+      "CSS",
+      "React Router",
+      "GSAP",
+      "SEO",
+      "Responsive Design",
+    ],
+    featured: true,
+    liveUrl: "https://www.akandassociates.com.np/",
+  },
+  {
+    id: "siddhartha-bio-fuels",
+    number: "03",
+    title: "Siddhartha Bio Fuels",
+    category: "Renewable Energy & Biomass",
+    type: "Corporate Website",
+    role: "Frontend Development",
+    year: "2026",
+    description:
+      "A modern corporate website for a Nepal-based biofuel company, showcasing biomass briquettes, sustainable fuel solutions, production processes and its commitment to converting agricultural residues into industrial energy.",
+    technologies: ["React", "JavaScript", "CSS", "GSAP", "Responsive Design"],
+    featured: true,
+    liveUrl: "https://siddharthabiofuels.com.np/",
+  },
+
+  {
+    id: "the-apex-global",
+    number: "04",
     title: "The Apex Global",
     category: "Education Consultancy",
     type: "Website",
@@ -16,7 +75,7 @@ const projects = [
 
   {
     id: "shiksha-sewa",
-    number: "02",
+    number: "05",
     title: "Shiksha Sewa",
     category: "Education Consultancy",
     type: "Website",
@@ -30,7 +89,7 @@ const projects = [
   },
   {
     id: "life-in-numbers",
-    number: "03",
+    number: "06",
     title: "Life in Numbers",
     category: "Interactive Experience",
     type: "Data Visualization Website",
@@ -52,7 +111,7 @@ const projects = [
   },
   {
     id: "zinniprime",
-    number: "04",
+    number: "07",
     title: "ZinniPrime",
     category: "E-commerce",
     type: "Web Application",
@@ -67,7 +126,7 @@ const projects = [
 
   {
     id: "life-development-centre",
-    number: "05",
+    number: "08",
     title: "Life Development Centre",
     category: "Social Service",
     type: "Website",
@@ -82,7 +141,7 @@ const projects = [
 
   {
     id: "avaya-machine",
-    number: "06",
+    number: "09",
     title: "Avaya Machine",
     category: "Corporate",
     type: "Website",
@@ -97,7 +156,7 @@ const projects = [
 
   {
     id: "nepal-albaik",
-    number: "07",
+    number: "10",
     title: "Nepal Albaik",
     category: "Restaurant",
     type: "Website",

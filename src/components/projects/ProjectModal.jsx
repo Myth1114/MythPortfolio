@@ -1,11 +1,85 @@
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-
 import { ArrowUpRight, X } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 import "./ProjectModal.css";
 
 function ProjectModal({ project, onClose }) {
   const shouldReduceMotion = useReducedMotion();
+
+  const dialogRef = useRef(null);
+  const closeButtonRef = useRef(null);
+  const previouslyFocusedElement = useRef(null);
+
+  useEffect(() => {
+    if (!project) return;
+
+    // Remember where focus was before the modal opened.
+    previouslyFocusedElement.current = document.activeElement;
+
+    // Prevent the page behind the modal from scrolling.
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    // Move keyboard focus into the modal.
+    const focusTimer = window.setTimeout(() => {
+      closeButtonRef.current?.focus();
+    }, 0);
+
+    const handleKeyDown = (event) => {
+      // Close the modal with Escape.
+      if (event.key === "Escape") {
+        event.preventDefault();
+        onClose();
+        return;
+      }
+
+      // Keep Tab focus inside the dialog.
+      if (event.key !== "Tab") return;
+
+      const dialog = dialogRef.current;
+
+      if (!dialog) return;
+
+      const focusableElements = dialog.querySelectorAll(
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+
+      const focusable = Array.from(focusableElements).filter(
+        (element) =>
+          !element.hasAttribute("hidden") &&
+          element.getAttribute("aria-hidden") !== "true"
+      );
+
+      if (focusable.length === 0) {
+        event.preventDefault();
+        dialog.focus();
+        return;
+      }
+
+      const firstElement = focusable[0];
+      const lastElement = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.clearTimeout(focusTimer);
+      document.removeEventListener("keydown", handleKeyDown);
+
+      document.body.style.overflow = previousOverflow;
+
+      previouslyFocusedElement.current?.focus();
+    };
+  }, [project, onClose]);
 
   return (
     <AnimatePresence>
@@ -22,12 +96,17 @@ function ProjectModal({ project, onClose }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            aria-hidden="true"
           />
+
           <motion.div
+            ref={dialogRef}
             className="project-modal__dialog"
             role="dialog"
             aria-modal="true"
-            aria-label={`${project.title} project details`}
+            aria-labelledby="project-modal-title"
+            aria-describedby="project-modal-description"
+            tabIndex={-1}
             initial={
               shouldReduceMotion
                 ? {
@@ -61,21 +140,29 @@ function ProjectModal({ project, onClose }) {
             }}
           >
             <button
+              ref={closeButtonRef}
               type="button"
               className="project-modal__close"
               onClick={onClose}
               aria-label="Close project details"
             >
-              <X size={20} strokeWidth={1.7} />
+              <X size={20} strokeWidth={1.7} aria-hidden="true" />
             </button>
 
-            <div className="project-modal__number">{project.number}</div>
+            <div className="project-modal__number" aria-hidden="true">
+              {project.number}
+            </div>
 
             <span className="eyebrow">{project.category}</span>
 
-            <h2>{project.title}</h2>
+            <h2 id="project-modal-title">{project.title}</h2>
 
-            <p className="project-modal__description">{project.description}</p>
+            <p
+              id="project-modal-description"
+              className="project-modal__description"
+            >
+              {project.description}
+            </p>
 
             <div className="project-modal__details">
               <div>
@@ -108,11 +195,11 @@ function ProjectModal({ project, onClose }) {
               <a
                 href={project.liveUrl}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="project-modal__link"
               >
                 Visit live website
-                <ArrowUpRight size={17} strokeWidth={1.7} />
+                <ArrowUpRight size={17} strokeWidth={1.7} aria-hidden="true" />
               </a>
             )}
           </motion.div>

@@ -52,7 +52,6 @@
 
 .project-modal__close {
   position: absolute;
-
   top: var(--space-5);
   right: var(--space-5);
 
@@ -76,7 +75,11 @@
 .project-modal__close:hover {
   transform: rotate(6deg);
 }
-
+.project-modal__close:focus-visible,
+.project-modal__link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
 /* =========================================
      CONTENT
      ========================================= */

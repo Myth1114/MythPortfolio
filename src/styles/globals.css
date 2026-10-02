@@ -155,3 +155,19 @@ h6 {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-muted);
 }
+
+.site-header__menu-button:focus-visible,
+.mobile-menu__close:focus-visible,
+.mobile-menu__nav a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+/* .contact-form input:focus-visible,
+.contact-form textarea:focus-visible,
+.contact-form__submit:focus-visible,
+.contact-page__social-links a:focus-visible,
+.contact-card__email a:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 1px;
+} */

@@ -6,7 +6,7 @@ import { primaryNavigation } from "../../data/navigation";
 
 import "./Header.css";
 
-function Header({ onMenuOpen }) {
+function Header({ onMenuOpen, isMenuOpen }) {
   return (
     <header className="site-header">
       <div className="site-header__inner container">
@@ -40,8 +40,10 @@ function Header({ onMenuOpen }) {
             className="site-header__menu-button"
             onClick={onMenuOpen}
             aria-label="Open navigation menu"
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
           >
-            <Menu size={20} strokeWidth={1.8} />
+            <Menu size={20} strokeWidth={1.8} aria-hidden="true" />
           </button>
         </div>
       </div>

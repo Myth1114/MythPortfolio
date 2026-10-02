@@ -15,8 +15,12 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+
       <PageShell>
-        <Header onMenuOpen={() => setMobileMenuOpen(true)} />
+        <Header
+          onMenuOpen={() => setMobileMenuOpen(true)}
+          isMenuOpen={mobileMenuOpen}
+        />
 
         <MobileMenu
           isOpen={mobileMenuOpen}
